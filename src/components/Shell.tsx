@@ -20,9 +20,9 @@ export default function Shell({ children }: { children: React.ReactNode }) {
 
   return (
     <SmoothScroll>
-      <Header lang={lang} />
+      {/* <Header lang={lang} /> */}
       <main className="min-h-screen">{children}</main>
-      <Footer />
+      {/* <Footer /> */}
     </SmoothScroll>
   );
 }

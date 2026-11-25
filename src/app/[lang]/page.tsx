@@ -1,10 +1,6 @@
-
-
-
 import { Metadata } from "next";
-import Hero from "@/components/Hero";
 import { getAlternates } from "@/hooks/helper";
-import About from "@/components/About";
+import ComingSoonHero from "@/components/ComingSoonHero";
 
 export async function generateMetadata({
   params,
@@ -20,16 +16,16 @@ export async function generateMetadata({
   return {
     title: {
       absolute: isDe
-        ? "Wild Kyrgyzstan | Abenteuer & Geführte Expeditionen"
+        ? "MyCentralAsia | Kultur, Kulinarik & Expeditionen entlang der Seidenstraße"
         : isEs
-          ? "Wild Kyrgyzstan | Aventuras y Expediciones Guiadas"
-          : "Wild Kyrgyzstan | Untamed Adventure & Guided Expeditions",
+          ? "MyCentralAsia | Cultura, Gastronomía y Expediciones en Asia Central"
+          : "MyCentralAsia | Culture, Cuisine & Silk Road Expeditions",
     },
     description: isDe
-      ? "Entdecken Sie unberührte Natur, nomadische Kultur und spektakuläre Trekkingtouren in Kirgistan mit lokalen Experten."
+      ? "Demnächst verfügbar: Ihr digitales Magazin für zentralasiatische Geschichte, Rezepte und authentische Reise-Guides."
       : isEs
-        ? "Descubre la naturaleza virgen, la cultura nómada y expediciones en la alta montaña de Kirguistán con expertos locales."
-        : "Discover untamed landscapes, nomadic heritage, high-altitude mountain travel, and authentic yurt stays with Wild Kyrgyzstan.",
+        ? "Próximamente: Tu revista digital sobre historia, gastronomía y guías de viaje por Asia Central."
+        : "Launching soon: An editorial journal uncovering the cuisine, nomadic heritage, history, and high-altitude expeditions of Central Asia.",
     alternates: getAlternates(lang, ""),
   };
 }
@@ -41,13 +37,14 @@ export default async function Home({
 }) {
   const resolvedParams = await params;
   const rawLang = resolvedParams?.lang || "en";
-  const lang = ["es", "de"].includes(rawLang) ? rawLang : "en";
+  const lang = (["es", "de"].includes(rawLang) ? rawLang : "en") as
+    | "en"
+    | "es"
+    | "de";
 
   return (
     <div className="relative w-full">
-      {/* Centered Cinematic Hero */}
-      <Hero lang={lang} />
-      <About lang={lang}/>
+      <ComingSoonHero lang={lang} />
     </div>
   );
 }
