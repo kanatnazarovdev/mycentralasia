@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X, ArrowUpRight } from "lucide-react";
 import { COUNTRIES } from "@/data/centralAsiaData";
@@ -20,20 +21,23 @@ export default function SiteHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/12 bg-[#08090B]/90 backdrop-blur-xl text-[#F4F1EA]">
-      <div className="hidden lg:block border-b border-white/[0.06] bg-[#050608]">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-2 font-mono text-[10px] tracking-[0.2em] text-stone-400">
+    <header className="sticky top-0 z-50 w-full border-b border-[#101D2E]/15 bg-[#F5F1E8]/95 backdrop-blur-md text-[#101D2E]">
+      {/* Top Archival Ledger Strip */}
+      <div className="hidden lg:block border-b border-[#101D2E]/10 bg-[#EBE4D5]">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-2 font-mono text-[10px] tracking-[0.2em] text-[#101D2E]/70">
           <div className="flex items-center gap-5">
-            <span>CENTRAL ASIA DIGITAL ARCHIVE & TRAVEL PORTAL</span>
-            <span className="text-stone-600">|</span>
+            <span className="font-semibold text-[#101D2E]">
+              MY CENTRAL ASIA • CULTURAL ARCHIVE & REGIONAL INTELLIGENCE
+            </span>
+            <span className="text-[#101D2E]/25">|</span>
             <div className="flex items-center gap-3">
               {COUNTRIES.map((c) => (
                 <Link
                   key={c.slug}
                   href={`/destinations/${c.slug}`}
-                  className="flex items-center gap-1.5 hover:text-[#F4F1EA] transition-colors"
+                  className="flex items-center gap-1.5 hover:text-[#0F4C81] transition-colors"
                 >
-                  <CountryFlag code={c.code} className="h-2.5 w-3.5" />
+                  <CountryFlag code={c.code} className="h-2.5 w-3.5 shadow-xs" />
                   <span>{c.code}</span>
                 </Link>
               ))}
@@ -45,7 +49,7 @@ export default function SiteHeader() {
               href="https://instagram.com/mycentralasia.co"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-[#0F4C81] transition-colors"
             >
               @MYCENTRALASIA.CO
             </a>
@@ -53,25 +57,29 @@ export default function SiteHeader() {
               href="https://www.wildinkyrgyzstan.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 text-amber-300/90 hover:text-amber-200 transition-colors"
+              className="flex items-center gap-1 font-semibold text-[#B84A27] hover:underline"
             >
-              <span>FIELD OPERATOR: WILD KYRGYZSTAN</span>
+              <span>FIELD PARTNER: WILD KYRGYZSTAN</span>
               <ArrowUpRight className="h-3 w-3" />
             </a>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-8 py-4">
-        <Link href="/" className="flex items-center gap-3">
-          <span className="font-serif text-xl sm:text-2xl tracking-[0.16em] uppercase text-[#F4F1EA]">
-            MYCENTRALASIA
-          </span>
-          <span className="hidden sm:inline-block border border-white/15 px-1.5 py-0.5 font-mono text-[9px] tracking-[0.2em] text-stone-400">
-            .COM
-          </span>
+      {/* Main Masthead */}
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-8 py-3.5">
+        <Link href="/" className="flex items-center overflow-hidden">
+          <Image
+            src="/myCentralasia.svg"
+            alt="My Central Asia"
+            width={240}
+            height={64}
+            className="h-10 sm:h-11 w-48 sm:w-56 object-cover object-center mix-blend-multiply contrast-110"
+            priority
+          />
         </Link>
 
+        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-7 font-mono text-[11px] tracking-[0.18em]">
           <div
             className="relative"
@@ -83,8 +91,8 @@ export default function SiteHeader() {
               onClick={() => setDestinationsOpen(!destinationsOpen)}
               className={`flex items-center gap-1.5 py-2 transition-colors ${
                 pathname?.includes("/destinations")
-                  ? "text-white font-semibold"
-                  : "text-stone-300 hover:text-white"
+                  ? "text-[#0F4C81] font-bold"
+                  : "text-[#101D2E]/80 hover:text-[#0F4C81]"
               }`}
             >
               <span>THE 5 STANS</span>
@@ -92,20 +100,20 @@ export default function SiteHeader() {
             </button>
 
             {destinationsOpen && (
-              <div className="absolute left-0 top-full w-80 border border-white/15 bg-[#0B0D11] p-2 shadow-2xl">
+              <div className="absolute left-0 top-full w-80 border border-[#101D2E]/20 bg-[#F5F1E8] p-2 shadow-xl">
                 {COUNTRIES.map((country) => (
                   <Link
                     key={country.slug}
                     href={`/destinations/${country.slug}`}
                     onClick={() => setDestinationsOpen(false)}
-                    className="flex items-start gap-3 p-3 hover:bg-white/[0.05] transition-colors"
+                    className="flex items-start gap-3 p-3 hover:bg-[#EBE4D5] transition-colors"
                   >
-                    <CountryFlag code={country.code} className="h-3.5 w-5 mt-0.5" />
+                    <CountryFlag code={country.code} className="h-3.5 w-5 mt-0.5 shadow-xs" />
                     <div>
-                      <div className="text-xs font-semibold tracking-wider text-[#F4F1EA] uppercase">
+                      <div className="text-xs font-bold tracking-wider text-[#101D2E] uppercase">
                         {country.name}
                       </div>
-                      <div className="mt-0.5 font-sans text-[11px] tracking-normal text-stone-400 line-clamp-1">
+                      <div className="mt-0.5 font-sans text-[11px] tracking-normal text-[#101D2E]/70 line-clamp-1">
                         {country.tagline}
                       </div>
                     </div>
@@ -123,8 +131,8 @@ export default function SiteHeader() {
                 href={item.href}
                 className={`py-2 transition-colors ${
                   active
-                    ? "border-b border-[#F4F1EA] text-white font-semibold"
-                    : "text-stone-300 hover:text-white"
+                    ? "border-b-2 border-[#B84A27] text-[#101D2E] font-bold"
+                    : "text-[#101D2E]/80 hover:text-[#0F4C81]"
                 }`}
               >
                 {item.label}
@@ -138,7 +146,7 @@ export default function SiteHeader() {
             href="https://www.wildinkyrgyzstan.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 bg-[#F4F1EA] px-4 py-2 font-mono text-[10px] font-semibold tracking-[0.18em] text-[#08090B] uppercase hover:bg-white transition-colors"
+            className="inline-flex items-center gap-1.5 bg-[#101D2E] px-4 py-2.5 font-mono text-[10px] font-semibold tracking-[0.18em] text-[#F5F1E8] uppercase hover:bg-[#0F4C81] transition-colors"
           >
             <span>BOOK EXPEDITION</span>
             <ArrowUpRight className="h-3.5 w-3.5" />
@@ -148,17 +156,18 @@ export default function SiteHeader() {
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-stone-300 hover:text-white"
+          className="md:hidden p-2 text-[#101D2E]"
           aria-label="Toggle Menu"
         >
           {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-white/10 bg-[#08090B] px-6 py-6 space-y-6">
+        <div className="md:hidden border-t border-[#101D2E]/15 bg-[#F5F1E8] px-6 py-6 space-y-6">
           <div className="space-y-3">
-            <div className="font-mono text-[10px] tracking-[0.2em] text-stone-500">
+            <div className="font-mono text-[10px] tracking-[0.2em] text-[#101D2E]/60">
               REGIONAL GUIDES
             </div>
             <div className="grid grid-cols-2 gap-2">
@@ -167,7 +176,7 @@ export default function SiteHeader() {
                   key={c.slug}
                   href={`/destinations/${c.slug}`}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-2 border border-white/10 px-3 py-2 font-mono text-xs text-stone-200"
+                  className="flex items-center gap-2 border border-[#101D2E]/15 bg-[#EBE4D5]/50 px-3 py-2 font-mono text-xs text-[#101D2E]"
                 >
                   <CountryFlag code={c.code} />
                   <span>{c.name}</span>
@@ -176,13 +185,13 @@ export default function SiteHeader() {
             </div>
           </div>
 
-          <div className="flex flex-col space-y-3 border-t border-white/10 pt-4 font-mono text-xs tracking-[0.18em]">
+          <div className="flex flex-col space-y-3 border-t border-[#101D2E]/15 pt-4 font-mono text-xs tracking-[0.18em]">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-1.5 text-stone-200 hover:text-white"
+                className="py-1.5 text-[#101D2E] hover:text-[#0F4C81]"
               >
                 {item.label}
               </Link>

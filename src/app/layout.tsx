@@ -55,7 +55,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="dark bg-[#08090B]">
-      <body className="min-h-screen flex flex-col bg-[#08090B] text-[#F4F1EA] antialiased">
+      <body className="min-h-screen flex flex-col bg-[#F5F1E8] text-[#101D2E] antialiased">
         <JsonLd data={orgSchema} />
         <SiteHeader />
         <main className="flex-1">{children}</main>

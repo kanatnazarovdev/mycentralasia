@@ -6,7 +6,7 @@ import { brandonGrotesque, dDin } from "../fonts";
 import Shell from "@/components/Shell";
 
 export const baseUrl =
-  process.env.NEXT_PUBLIC_BASE_URL || "https://wildinkyrgyzstan.com";
+  process.env.NEXT_PUBLIC_BASE_URL || "https://mycentralasia.com";
 
 export async function generateMetadata({
   params,
@@ -23,26 +23,22 @@ export async function generateMetadata({
     metadataBase: new URL(baseUrl),
     title: {
       default: isDe
-        ? "Wild Kyrgyzstan | Geführte Touren & Bergexpeditionen"
+        ? "My Central Asia | Geschichte, Kulinarik, Kultur & Seidenstraßen-Expeditionen"
         : isEs
-          ? "Wild Kyrgyzstan | Tours Guiados y Expediciones de Montaña"
-          : "Wild Kyrgyzstan | Guided Adventure Tours & Mountain Expeditions",
-      template: "%s | Wild Kyrgyzstan",
+          ? "My Central Asia | Historia, Gastronomía, Cultura y Expediciones en Asia Central"
+          : "My Central Asia | History, Cuisine, Culture & Silk Road Expeditions",
+      template: "%s | My Central Asia",
     },
     description: isDe
-      ? "Entdecken Sie unberührte Natur, nomadische Kultur und spektakuläre Trekkingtouren in Kirgistan mit lokalen Experten."
+      ? "Die digitale Plattform für Zentralasien: Geschichte der Seidenstraße, kulinarisches Erbe, regionale Berichte und Expeditionen durch Kasachstan, Kirgisistan, Usbekistan, Tadschikistan und Turkmenistan."
       : isEs
-        ? "Descubre la naturaleza virgen, la cultura nómada y excursiones épicas en Kirguistán con expertos locales."
-        : "Discover untamed nature, nomadic culture, high-altitude alpine treks, and authentic yurt stays in Central Asia with Wild Kyrgyzstan.",
+        ? "La plataforma digital de referencia sobre Asia Central: historia de la Ruta de la Seda, gastronomía tradicional, crónicas regionales y expediciones por las 5 repúblicas."
+        : "The authoritative digital platform for Central Asia—uniting Silk Road history, heirloom culinary archives, regional dispatches, and overland expeditions across Kazakhstan, Kyrgyzstan, Uzbekistan, Tajikistan, and Turkmenistan.",
 
     icons: {
-      icon: [
-        { url: "/favicon.ico" },
-        { url: "/icon.png", type: "image/png", sizes: "32x32" },
-        { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
-      ],
-      shortcut: "/favicon.ico",
-      apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+      icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+      shortcut: "/icon.svg",
+      apple: [{ url: "/icon.svg", type: "image/svg+xml" }],
     },
 
     alternates: {
@@ -55,17 +51,17 @@ export async function generateMetadata({
     },
 
     openGraph: {
-      title: "Wild Kyrgyzstan | Expedition & Adventure Tours",
+      title: "My Central Asia | Culture, Cuisine & Silk Road Expeditions",
       description:
-        "Experience the untamed heart of Central Asia. Guided trekking, horseback expeditions, and nomadic culture.",
+        "Uncovering the history, culinary heritage, and untamed high-altitude expedition routes across Central Asia.",
       url: `${baseUrl}/${lang}`,
-      siteName: "Wild Kyrgyzstan",
+      siteName: "My Central Asia",
       images: [
         {
-          url: `${baseUrl}/yurta.jpg`,
+          url: `${baseUrl}/og-mycentralasia.jpg`,
           width: 1200,
           height: 630,
-          alt: "Wild Kyrgyzstan — Nomadic Yurt Camp and Tian Shan Mountains",
+          alt: "My Central Asia — Silk Road History, Cuisine & High-Altitude Expeditions",
         },
       ],
       locale: isDe ? "de_DE" : isEs ? "es_ES" : "en_US",
@@ -74,10 +70,10 @@ export async function generateMetadata({
 
     twitter: {
       card: "summary_large_image",
-      title: "Wild Kyrgyzstan | Untamed Adventure Tours",
+      title: "My Central Asia | Culture, Cuisine & Silk Road Expeditions",
       description:
-        "Experience the untamed heart of Central Asia. Guided trekking, horseback expeditions, and nomadic culture.",
-      images: [`${baseUrl}/songkul.jpg`],
+        "The digital archive and travel intelligence platform for Kazakhstan, Kyrgyzstan, Uzbekistan, Tajikistan, and Turkmenistan.",
+      images: [`${baseUrl}/og-mycentralasia.jpg`],
     },
 
     robots: {
@@ -102,34 +98,30 @@ export default async function RootLayout(props: {
   const { children } = props;
   const lang = resolvedParams?.lang || "en";
 
-  const travelAgencyJsonLd = {
+  const organizationJsonLd = {
     "@context": "https://schema.org",
-    "@type": "TravelAgency",
-    name: "Wild Kyrgyzstan",
-    alternateName: "Wild Kyrgyzstan Digital Platform",
-    image: `${baseUrl}/yurta.jpg`,
-    "@id": baseUrl,
+    "@type": "NewsMediaOrganization",
+    name: "My Central Asia",
+    alternateName: "MyCentralAsia.com",
+    "@id": `${baseUrl}/#organization`,
     url: baseUrl,
-    telephone: "+996-505-583-958",
-    email: "wildinkyrgyzstan@gmail.com",
-    priceRange: "$$",
-    currenciesAccepted: "USD, EUR, CHF, KGS",
-    paymentAccepted: "Credit Card, Debit Card, Wire Transfer",
-    areaServed: {
-      "@type": "Country",
-      name: "Kyrgyzstan",
-    },
+    logo: `${baseUrl}/icon.svg`,
+    areaServed: [
+      { "@type": "Country", name: "Kazakhstan" },
+      { "@type": "Country", name: "Kyrgyzstan" },
+      { "@type": "Country", name: "Uzbekistan" },
+      { "@type": "Country", name: "Tajikistan" },
+      { "@type": "Country", name: "Turkmenistan" },
+    ],
     description:
-      "Wild Kyrgyzstan is building the first digital tourism platform in Kyrgyzstan, connecting international travelers directly with mountain trekking, nomadic yurt stays, and verified local guides.",
+      "My Central Asia is an independent digital publication and cultural archive documenting Silk Road history, heirloom Central Asian cuisine, regional news dispatches, and overland expeditions.",
     knowsAbout: [
-      "Digital Tourism Platform",
-      "Trekking in Tian Shan Mountains",
-      "Horseback Expeditions in Son-Kul",
-      "Nomadic Yurt Stay Experiences",
-      "Overland 4x4 Mountain Tours",
-      "Song-Kul Lake Trekking",
-      "Ala-Kul Pass Hikes",
-      "Central Asia Travel Logistics",
+      "Central Asian History & Silk Road Heritage",
+      "Dungan & Nomadic Central Asian Gastronomy",
+      "Uzbekistan Timurid Architecture",
+      "Kyrgyzstan High-Altitude Horse & Yurt Expeditions",
+      "Tajikistan Pamir Highway & Wakhan Corridor",
+      "Kazakhstan Steppe & Canyon Overland Routes",
     ],
     address: {
       "@type": "PostalAddress",
@@ -143,9 +135,8 @@ export default async function RootLayout(props: {
       longitude: 74.5698,
     },
     sameAs: [
-      "https://www.instagram.com/wildinkyrgyzstan",
-      "https://www.facebook.com/wildinkyrgyzstan",
-      "https://www.youtube.com/@wildinkyrgyzstan",
+      "https://www.instagram.com/mycentralasia.co",
+      "https://www.wildinkyrgyzstan.com",
     ],
   };
 
@@ -156,29 +147,29 @@ export default async function RootLayout(props: {
         "@type": "WebSite",
         "@id": `${baseUrl}/#website`,
         url: baseUrl,
-        name: "Wild Kyrgyzstan",
-        description: "The First Digital Tourism Platform in Kyrgyzstan",
+        name: "My Central Asia",
+        description:
+          "Digital Platform for Central Asian History, Cuisine, Culture & Expeditions",
         publisher: {
-          "@type": "Organization",
-          name: "Wild Kyrgyzstan",
-          url: baseUrl,
-          logo: `${baseUrl}/icon-192.png`,
+          "@id": `${baseUrl}/#organization`,
         },
       },
       {
         "@type": "SiteNavigationElement",
         "@id": `${baseUrl}/#navigation`,
         name: [
-          "Destinations & Wilderness Regions",
-          "Jol AI - Kyrgyzstan's First AI Tour Guide",
-          "About Kyrgyzstan's First Digital Tourism Platform",
-          "Field Journal & Cultural Archive",
+          "The 5 Stans Regional Guides",
+          "Journal & Regional News Dispatches",
+          "Silk Road Historical Chronicle",
+          "Central Asian Cuisine & Recipes",
+          "Overland Silk Road Expeditions",
         ],
         url: [
-          `${baseUrl}/${lang}/destinations`,
-          `${baseUrl}/${lang}/chat`,
-          `${baseUrl}/${lang}/about`,
-          `${baseUrl}/${lang}/journal`,
+          `${baseUrl}/${lang}/destinations/kyrgyzstan`,
+          `${baseUrl}/${lang}/news`,
+          `${baseUrl}/${lang}/history`,
+          `${baseUrl}/${lang}/cuisine`,
+          `${baseUrl}/${lang}/expeditions`,
         ],
       },
     ],
@@ -194,7 +185,7 @@ export default async function RootLayout(props: {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(travelAgencyJsonLd),
+            __html: JSON.stringify(organizationJsonLd),
           }}
         />
         <script
@@ -202,20 +193,19 @@ export default async function RootLayout(props: {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(sitelinksJsonLd) }}
         />
       </head>
-      <body className="bg-[#0F0E0D] text-[#FAF8F5] antialiased selection:bg-amber-500 selection:text-black">
+      <body className="bg-[#F5F1E8] text-[#101D2E] antialiased selection:bg-sky-400/30 selection:text-white">
         <NextTopLoader
-          color="#FAF8F5"
+          color="#0F4C81"
           initialPosition={0.08}
           crawlSpeed={200}
-          height={3}
+          height={2}
           crawl={true}
           showSpinner={false}
           easing="ease"
           speed={200}
-          shadow="0 0 10px #FAF8F5,0 0 5px #FAF8F5"
+          shadow="0 0 10px #F4F1EA,0 0 5px #F4F1EA"
         />
 
-        {/* ── SHELL DYNAMICALLY EXCLUDES FOOTER & SMOOTH SCROLL ON /CHAT ── */}
         <Shell>{children}</Shell>
       </body>
     </html>
