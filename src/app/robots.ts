@@ -1,14 +1,11 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://wildinkyrgyzstan.com";
-
   return {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/studio/"],
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: "https://mycentralasia.com/sitemap.xml",
   };
 }
