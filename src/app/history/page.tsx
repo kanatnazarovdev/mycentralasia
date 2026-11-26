@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import HistorySection from "@/components/home/HistorySection";
+import SilkRoadCanvas from "@/components/history/SilkRoadCanvas";
 import JsonLd from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
@@ -18,6 +19,33 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
+
+const ERA_FILMS = [
+  {
+    period: "2200 BCE – 500 BCE",
+    title: "Oxus Oasis & Saka Steppe",
+    caption: "Mounted Saka horsemen crossing the high Tian Shan dawn mist.",
+    videoSrc: "/videos/era-oxus.mp4",
+  },
+  {
+    period: "200 BCE – 800 CE",
+    title: "Sogdian Silk Road Caravans",
+    caption: "Bactrian caravans traversing red sandstone Pamir trade passes.",
+    videoSrc: "/videos/era-sogdian.mp4",
+  },
+  {
+    period: "800 CE – 1220 CE",
+    title: "Islamic Golden Age",
+    caption: "Astronomers and scholars in Bukhara and Khwarezm observatories.",
+    videoSrc: "/videos/https://www.mycentralasia.com/culture.mp4",
+  },
+  {
+    period: "1370 CE – 1507 CE",
+    title: "The Timurid Renaissance",
+    caption: "Turquoise majolica tilework rising across Registan Samarkand.",
+    videoSrc: "/videos/era-timurid.mp4",
+  },
+];
 
 export default function HistoryPage() {
   const jsonLd = {
@@ -46,7 +74,7 @@ export default function HistoryPage() {
 
       <div className="mx-auto max-w-7xl px-6 sm:px-8 pt-14 pb-8 border-b border-[#101D2E]/15">
         <div className="font-mono text-[11px] tracking-[0.24em] text-[#B84A27] uppercase">
-          HISTORICAL ARCHIVE • TRANSOXIANA & THE STEPPE
+          HISTORICAL ARCHIVE • TRANSOXIANA &amp; THE STEPPE
         </div>
         <h1 className="mt-3 font-serif text-4xl sm:text-6xl font-normal text-[#101D2E]">
           History of Central Asia
@@ -63,7 +91,7 @@ export default function HistoryPage() {
             <div className="font-mono text-[10px] tracking-[0.2em] text-[#0F4C81] uppercase">
               2200 BCE – 500 BCE
             </div>
-            <div className="mt-1 font-serif text-lg font-medium">Oxus & Saka Foundations</div>
+            <div className="mt-1 font-serif text-lg font-medium">Oxus &amp; Saka Foundations</div>
             <p className="mt-1 text-xs text-[#101D2E]/70 leading-relaxed">
               Fortified Bronze Age oasis towns along the Amu Darya meet mounted
               Saka confederations across the Tian Shan and Kazakh steppe.
@@ -73,7 +101,7 @@ export default function HistoryPage() {
             <div className="font-mono text-[10px] tracking-[0.2em] text-[#0F4C81] uppercase">
               200 BCE – 1000 CE
             </div>
-            <div className="mt-1 font-serif text-lg font-medium">Sogdian & Islamic Golden Age</div>
+            <div className="mt-1 font-serif text-lg font-medium">Sogdian &amp; Islamic Golden Age</div>
             <p className="mt-1 text-xs text-[#101D2E]/70 leading-relaxed">
               Panjikent and Samarkand anchor transcontinental trade while
               scholars like Al-Khwarizmi, Al-Biruni, and Ibn Sina transform global science.
@@ -91,6 +119,59 @@ export default function HistoryPage() {
           </div>
         </div>
       </div>
+
+      {/* Interactive Animated Silk Road Cartography Canvas */}
+      <SilkRoadCanvas />
+
+      {/* 4-Era Visual Cinema Reels (5-Second Higgsfield Loops) */}
+      <section className="mx-auto max-w-7xl px-6 sm:px-8 pb-12">
+        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[#101D2E]/15 pb-4 mb-6">
+          <div>
+            <div className="font-mono text-[10px] tracking-[0.22em] text-[#B84A27] uppercase">
+              VISUAL RECONSTRUCTIONS
+            </div>
+            <h2 className="mt-1 font-serif text-2xl sm:text-3xl font-normal text-[#101D2E]">
+              Scenes Across Four Millennia
+            </h2>
+          </div>
+          <span className="font-mono text-[10px] tracking-[0.18em] text-[#101D2E]/60 uppercase">
+            16:9 ARCHIVAL MOTION PLATES
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {ERA_FILMS.map((film) => (
+            <figure
+              key={film.period}
+              className="group relative overflow-hidden border border-[#101D2E]/20 bg-[#101D2E] text-[#F5F1E8]"
+            >
+              <div className="relative aspect-video w-full overflow-hidden bg-[#101D2E]">
+                <video
+                  src={film.videoSrc}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="h-full w-full object-cover opacity-85 transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#101D2E] via-[#101D2E]/35 to-transparent" />
+                <figcaption className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
+                  <div className="font-mono text-[10px] tracking-[0.2em] text-[#E68A6E] uppercase">
+                    {film.period}
+                  </div>
+                  <h3 className="mt-1 font-serif text-xl sm:text-2xl font-normal text-white">
+                    {film.title}
+                  </h3>
+                  <p className="mt-1 text-xs sm:text-sm text-[#F5F1E8]/80 font-light">
+                    {film.caption}
+                  </p>
+                </figcaption>
+              </div>
+            </figure>
+          ))}
+        </div>
+      </section>
 
       <HistorySection compact={false} />
     </div>
