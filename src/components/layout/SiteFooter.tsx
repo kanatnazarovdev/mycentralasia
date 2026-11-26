@@ -13,7 +13,7 @@ export default function SiteFooter() {
           <div className="space-y-4">
             <Link href="/" className="inline-block">
            <Image
-    src="/myCentralasia.svg"
+    src="/mycentralAsia.svg"
     alt="My Central Asia"
     width={260}
     height={70}
@@ -26,7 +26,7 @@ export default function SiteFooter() {
               Central Asia.
             </p>
             <div className="pt-2 font-mono text-[11px] tracking-[0.16em] text-[#F5F1E8]/60">
-              BISHKEK • SAMARKAND • ALMATY • DUSHANBE
+           TASHKENT • BUKHARA • BISHKEK • SAMARKAND • ALMATY • DUSHANBE 
             </div>
           </div>
 
@@ -60,6 +60,11 @@ export default function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link href="/culture" className="hover:text-white transition-colors">
+                  Nomadic &amp; Silk Road Culture
+                </Link>
+              </li>
+              <li>
                 <Link href="/history" className="hover:text-white transition-colors">
                   Silk Road Historical Timeline
                 </Link>
@@ -77,7 +82,7 @@ export default function SiteFooter() {
             </ul>
           </div>
 
-          <div className="border border-[#F5F1E8]/20 bg-[#F5F1E8]/[0.04] p-6">
+          {/* <div className="border border-[#F5F1E8]/20 bg-[#F5F1E8]/[0.04] p-6">
             <div className="font-mono text-[10px] tracking-[0.22em] text-[#E68A6E] uppercase">
               OFFICIAL EXPEDITION PARTNER
             </div>
@@ -97,7 +102,7 @@ export default function SiteFooter() {
               <span>EXPLORE TOURS</span>
               <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
-          </div>
+          </div> */}
         </div>
 
         <div className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#F5F1E8]/15 pt-6 font-mono text-[11px] tracking-[0.16em] text-[#F5F1E8]/55">

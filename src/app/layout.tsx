@@ -3,6 +3,7 @@ import "./globals.css";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 import JsonLd from "@/components/seo/JsonLd";
+import { brandonGrotesque, dDin } from "./fonts";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mycentralasia.com"),
@@ -40,23 +41,45 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const orgSchema = {
+  const siteSchema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "MyCentralAsia",
-    url: "https://mycentralasia.com",
-    sameAs: [
-      "https://instagram.com/mycentralasia.co",
-      "https://www.wildinkyrgyzstan.com",
+    "@graph": [
+      {
+        "@type": "NewsMediaOrganization",
+        "@id": "https://mycentralasia.com/#organization",
+        name: "My Central Asia",
+        alternateName: "MyCentralAsia.com",
+        url: "https://mycentralasia.com",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://mycentralasia.com/mycentralAsia.svg",
+        },
+        sameAs: [
+          "https://instagram.com/mycentralasia.co",
+          "https://www.wildinkyrgyzstan.com",
+        ],
+        description:
+          "Digital publication and cultural archive covering Central Asian history, cuisine, culture, and overland expeditions.",
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://mycentralasia.com/#website",
+        url: "https://mycentralasia.com",
+        name: "My Central Asia",
+        publisher: {
+          "@id": "https://mycentralasia.com/#organization",
+        },
+      },
     ],
-    description:
-      "Digital publication and cultural archive covering Central Asian history, cuisine, culture, and overland expeditions.",
   };
 
   return (
-    <html lang="en" className="dark bg-[#08090B]">
-      <body className="min-h-screen flex flex-col bg-[#F5F1E8] text-[#101D2E] antialiased">
-        <JsonLd data={orgSchema} />
+    <html
+      lang="en"
+      className={`${brandonGrotesque.variable} ${dDin.variable}`}
+    >
+      <body className="min-h-screen flex flex-col bg-[#F5F1E8] text-[#101D2E] font-sans antialiased">
+        <JsonLd data={siteSchema} />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

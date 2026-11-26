@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import CountryFlag from "@/components/layout/CountryFlag";
 
@@ -68,22 +67,15 @@ export default function CinemaHero() {
   return (
     <section className="relative min-h-[86vh] w-full overflow-hidden bg-[#08090B] text-[#F4F1EA] flex flex-col justify-between border-b border-white/12">
       <div className="pointer-events-none absolute inset-0 z-0">
-        <AnimatePresence mode="wait">
-          <motion.video
-            key={current.id}
-            src={current.video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            initial={{ opacity: 0, scale: 1.03 }}
-            animate={{ opacity: 0.72, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
-            className="h-full w-full object-cover contrast-[1.06]"
-          />
-        </AnimatePresence>
-
+        <video
+          key={current.id}
+          src={current.video}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover opacity-75 contrast-[1.06] transition-opacity duration-700"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-[#08090B]/70 via-[#08090B]/35 to-[#08090B]" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#08090B]/85 via-[#08090B]/30 to-transparent" />
       </div>
