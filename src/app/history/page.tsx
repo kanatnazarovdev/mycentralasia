@@ -37,7 +37,7 @@ const ERA_FILMS = [
     period: "800 CE – 1220 CE",
     title: "Islamic Golden Age",
     caption: "Astronomers and scholars in Bukhara and Khwarezm observatories.",
-    videoSrc: "/videos/https://www.mycentralasia.com/culture.mp4",
+    videoSrc: "/videos/era-golden.mp4",
   },
   {
     period: "1370 CE – 1507 CE",
