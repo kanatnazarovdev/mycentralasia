@@ -43,7 +43,7 @@ const ERA_FILMS = [
     period: "1370 CE – 1507 CE",
     title: "The Timurid Renaissance",
     caption: "Turquoise majolica tilework rising across Registan Samarkand.",
-    videoSrc: "/videos/era-timurid.mp4",
+    videoSrc: "/videos/timurid.webm",
   },
 ];
 

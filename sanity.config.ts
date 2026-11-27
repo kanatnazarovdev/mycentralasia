@@ -11,10 +11,10 @@ import {structureTool} from 'sanity/structure'
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import {schema} from './src/sanity/schemaTypes'
 import {structure} from './src/sanity/structure'
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '0q3nobfm'
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'rgsy2l30'
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
 export default defineConfig({
-  basePath: '/en/studio',
+  basePath: '/studio',
   projectId,
   dataset,
   schema,
